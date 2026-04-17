@@ -3,8 +3,8 @@
 ## USO DEL SISTEMA🌟
 
 ### Es un sistema que cuenta con un inicio de sesion y un usario por defecto que se encuentra en el codigo, contiene un CRUD para insertar
-## productos como su concepto, costo y su stock, se puede editar y eliminar.
-## Enseña los precios por producto y el stock de cada producto por medio de graficos.
+### productos como su concepto, costo y su stock, se puede editar y eliminar.
+### Enseña los precios por producto y el stock de cada producto por medio de graficos.
 
 ## INSTALACION EN PC 💻
 
