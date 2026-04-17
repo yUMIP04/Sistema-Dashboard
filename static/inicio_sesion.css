@@ -1,0 +1,26 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+   background-image: url(/static/fondo.jpg);
+   background-size: cover;
+}
+.form-container{
+   position: relative;
+   left: 2%;
+  top: 5px;
+  border-style: inset;
+  padding-right: 40px;
+  background-color: #F2F0EB ;
+}
+
+.form-control-sm{
+    width: -80px;
+}
+.btn-success{
+    width: 246px;
+    display: flex;
+    align-content: center;
+}

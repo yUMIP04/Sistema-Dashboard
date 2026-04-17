@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta  name="viewport" content="width=device-width, initial-scale=1.0">
+  
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <!-- Basic Icons -->
+<link href="https://cdn.boxicons.com/3.0.8/fonts/basic/boxicons.min.css" rel="stylesheet">
+<!-- Filled Icons -->
+<link href="https://cdn.boxicons.com/3.0.8/fonts/filled/boxicons-filled.min.css" rel="stylesheet">
+<!-- Brand Icons -->
+<link href="https://cdn.boxicons.com/3.0.8/fonts/brands/boxicons-brands.min.css" rel="stylesheet">
+    <title>Productos</title>
+</head>
+<body>
+
+    <div class="header">
+        <h1 class="titulo-header">Sistema de Inventario</h1>
+        <p class="usuario"><i class="bx bx-user" /> </i>{{session['nombre']}}</p>
+        <a class="logout" href="{{url_for('logout') }}">Cerrar Sesion</a>
+    </div>
+    
+   <div class="container-fluid mt-4"> 
+    <div class="row"> <div class="col-12 col-md-4 ms-md-3"> 
+            <div class="titulo mb-3">
+                <h1 id="Titulo" class="h4">Agrega Productos</h1>
+            </div>
+
+            <form action="/dashboard" method="post" class="border p-4 shadow-sm rounded bg-light">
+                <div class="mb-3">
+                    <label for="producto" class="form-label">Producto:</label>
+                    <input type="text" class="form-control" name="producto" id="producto" required>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="precio" class="form-label">Precio:</label>
+                    <input type="number" class="form-control" name="precio" id="precio" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="stock" class="form-label">Stock:</label>
+                    <input type="number" class="form-control" name="stock" id="stock" required>
+                </div>
+
+                <button type="submit" class="btn btn-success">Agregar</button>
+            </form>
+        </div> <div class="col-12 col-md-7">
+            <div class="table-responsive">
+                <table class="table table-hover border shadow-sm">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>#</th>
+                            <th>Producto</th>
+                            <th>Precio</th>
+                            <th>Stock</th>
+                            <th class="text-center">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% if lista_productos %}
+                            {% for i, p, pre, s in lista_productos %}
+                            <tr>
+                                <td>{{ i }}</td>
+                                <td>{{ p }}</td>
+                                <td>${{ pre }}</td>
+                                <td>{{ s }}</td>
+                                <td class="text-center">
+                                    <a href="{{ url_for('editar_producto', id=i, producto=p) }}" class="btn btn-sm btn-outline-primary">Editar</a>
+                                    <a href="{{ url_for('eliminar', id=i) }}" class="btn btn-sm btn-outline-danger">Eliminar</a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        {% else %}
+                            <tr>
+                                <td colspan="5" class="text-center text-muted">No hay productos.</td>
+                            </tr>
+                        {% endif %}
+                    </tbody>
+                </table>
+            </div>
+        </div> </div> </div>
+
+<div class="row"><div class="container-fluid">
+
+    <div class="container-sm">
+
+        <div class="row">
+            <div class="col">
+    <iframe src="{{ url_for('static', filename='Graficos.html') }}"width="80%" height="500px" frameborder="0"></iframe>
+            </div>
+
+            <div class="col">
+    <iframe src="{{ url_for('static', filename='stocks.html') }}"width="80%" height="500px" frameborder="0"></iframe>
+            </div>        
+</div>
+    </div>
+
+</body>
+<script src="{{ url_for('static', filename='JS/index.js' ) }}"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</html>
